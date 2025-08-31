@@ -47,6 +47,11 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # Enable Composer autocompletion
 RUN composer completion bash > /etc/bash_completion.d/composer
 
+# install MongoDB extension
+
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+
+
 # set working directory
 WORKDIR $APP_HOME
 

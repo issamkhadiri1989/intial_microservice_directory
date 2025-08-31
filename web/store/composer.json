@@ -1,0 +1,11 @@
+{
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "symfony/ai-platform": "dev-main",
+        "symfony/ai-agent": "dev-main",
+        "symfony/ai-store": "dev-main",
+        "mongodb/mongodb": "^2.1",
+        "symfony/uid": "^7.3"
+    }
+}

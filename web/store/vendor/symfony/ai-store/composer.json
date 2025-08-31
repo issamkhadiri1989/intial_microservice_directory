@@ -1,0 +1,69 @@
+{
+    "name": "symfony/ai-store",
+    "type": "library",
+    "description": "Low-level abstraction for storing and retrieving documents in a vector store.",
+    "keywords": [
+        "ai",
+        "mongodb",
+        "pinecone",
+        "chromadb",
+        "mariadb",
+        "postgres",
+        "meilisearch",
+        "surrealdb",
+        "qdrant",
+        "neo4j"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christopher Hertel",
+            "email": "mail@christopher-hertel.de"
+        },
+        {
+            "name": "Oskar Stark",
+            "email": "oskarstark@googlemail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "ext-fileinfo": "*",
+        "psr/log": "^3.0",
+        "symfony/ai-platform": "@dev",
+        "symfony/clock": "^6.4 || ^7.1",
+        "symfony/http-client": "^6.4 || ^7.1",
+        "symfony/uid": "^6.4 || ^7.1"
+    },
+    "require-dev": {
+        "codewithkyrian/chromadb-php": "^0.2.1 || ^0.3 || ^0.4",
+        "doctrine/dbal": "^3.3 || ^4.0",
+        "mongodb/mongodb": "^1.21 || ^2.0",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.5",
+        "probots-io/pinecone-php": "^1.0",
+        "symfony/cache": "^7.3"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "conflict": {
+        "mongodb/mongodb": "<1.21"
+    },
+    "extra": {
+        "thanks": {
+            "name": "symfony/ai",
+            "url": "https://github.com/symfony/ai"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Symfony\\AI\\Store\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Symfony\\AI\\Store\\Tests\\": "tests/",
+            "Symfony\\AI\\PHPStan\\": "../../.phpstan/"
+        }
+    }
+}

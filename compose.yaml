@@ -19,6 +19,8 @@ services:
             - symfony
 
     web_server:
+        environment:
+            GEMINI_API_KEY: 'AIzaSyBhjR2N3cFdwdiW7MmD8fUVWIe0i_vJRck'
         build:
             context: ./infra/web
             dockerfile: ./php/Dockerfile
@@ -62,11 +64,38 @@ services:
         volumes:
             - db_admin_data:/var/www/html
 
+
+    mongo:
+        image: mongo:latest
+        ports:
+            - "27017:27017"
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=password
+        volumes:
+            - mongo-data:/data/db
+        networks:
+            - symfony
+    mongo-express:
+        image: mongo-express:latest
+        restart: always
+        ports:
+            - "8081:8081"
+        environment:
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+            - ME_CONFIG_MONGODB_SERVER=mongo
+            - MONGO_INITDB_ROOT_USERNAME='admin'
+            - MONGO_INITDB_ROOT_PASSWORD='pass'
+        networks:
+            - symfony
 volumes:
     db_admin_data:
     mysql:
     mysql_user:
     esdata:
+    mongodb_data:
+    mongo-data:
 
 networks:
     symfony:
